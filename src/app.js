@@ -1,7 +1,8 @@
-// const catalogueElement = document.querySelector('.catalogue');
-// catalogueElement.style.display = 'inline-block';
+import { navigator } from "./navigator.js";
 
-import { router } from "./router.js";
+const catalogueElement = document.querySelector('.catalogue');
+
+showCatalogue();
 
 const userNav = document.getElementById('user');
 const guestNav = document.getElementById('guest');
@@ -13,6 +14,10 @@ navElement.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.tagName == 'A') {
         let url = new URL(e.target.href);
-        router(url.pathname);
+        navigator(url.pathname);
     }
 })
+
+function showCatalogue() {
+    catalogueElement.style.display = 'block';
+}

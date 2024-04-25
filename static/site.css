@@ -65,6 +65,6 @@ a.active {
     display: none;
 }
 
-.catalogue, .create, .login, .register {
+.catalogue, .create, .login, .register, .error {
     display: none;
 }
