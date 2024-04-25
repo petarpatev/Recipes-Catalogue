@@ -13,6 +13,8 @@ const navElement = document.querySelector('.nav');
 navElement.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.tagName == 'A') {
+        document.querySelector('.active').classList.remove('active');
+        e.target.classList.add('active');
         let url = new URL(e.target.href);
         navigator(url.pathname);
     }
