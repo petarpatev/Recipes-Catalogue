@@ -1,8 +1,7 @@
 import { navigator } from "./navigator.js";
+import { renderCatalogue } from "./pages/catalogue.js";
 
-const catalogueElement = document.querySelector('.catalogue');
-
-showCatalogue();
+renderCatalogue();
 
 const userNav = document.getElementById('user');
 const guestNav = document.getElementById('guest');
@@ -19,7 +18,3 @@ navElement.addEventListener('click', (e) => {
         navigator(url.pathname);
     }
 })
-
-function showCatalogue() {
-    catalogueElement.style.display = 'block';
-}
