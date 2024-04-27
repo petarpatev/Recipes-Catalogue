@@ -1,4 +1,5 @@
 import { updateNav } from "../auth.js";
+import { renderCatalogue } from "./catalogue.js";
 
 const loginElement = document.querySelector('.login');
 
@@ -29,6 +30,8 @@ loginFormElement.addEventListener('submit', (e) => {
             alert('You was successfully logged in!');
             loginFormElement.reset();
             updateNav();
+            loginElement.style.display = 'none';
+            renderCatalogue();
         })
         .catch(err => console.log(err))
 })

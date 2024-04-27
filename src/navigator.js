@@ -3,6 +3,8 @@ import { renderLogin } from './pages/login.js';
 import { renderRegister } from './pages/register.js';
 import { renderCreate } from './pages/create.js';
 import { render404 } from './pages/page404.js';
+import { renderLogout } from './pages/logOut.js';
+
 
 const mainElement = document.querySelector('.main');
 
@@ -11,6 +13,7 @@ const routes = {
     '/login': renderLogin,
     '/register': renderRegister,
     '/create': renderCreate,
+    '/logout': renderLogout,
 }
 
 export function navigator(path) {

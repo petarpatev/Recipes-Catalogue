@@ -11,3 +11,8 @@ export function updateNav() {
         guestNav.style.display = 'inline-block';
     }
 }
+
+export function logout() {
+    localStorage.clear();
+    updateNav();
+}
