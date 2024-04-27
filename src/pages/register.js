@@ -1,3 +1,5 @@
+
+
 const registerElement = document.querySelector('.register');
 
 export function renderRegister() {

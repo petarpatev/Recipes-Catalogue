@@ -1,12 +1,10 @@
 import { navigator } from "./navigator.js";
 import { renderCatalogue } from "./pages/catalogue.js";
+import { updateNav } from "./auth.js";
 
 renderCatalogue();
+updateNav();
 
-const userNav = document.getElementById('user');
-const guestNav = document.getElementById('guest');
-userNav.style.display = 'inline-block';
-guestNav.style.display = 'inline-block';
 
 const navElement = document.querySelector('.nav');
 navElement.addEventListener('click', (e) => {

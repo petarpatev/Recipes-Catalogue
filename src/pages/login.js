@@ -1,4 +1,4 @@
-
+import { updateNav } from "../auth.js";
 
 const loginElement = document.querySelector('.login');
 
@@ -28,6 +28,7 @@ loginFormElement.addEventListener('submit', (e) => {
             localStorage.setItem('user', JSON.stringify(user));
             alert('You was successfully logged in!');
             loginFormElement.reset();
+            updateNav();
         })
         .catch(err => console.log(err))
 })
