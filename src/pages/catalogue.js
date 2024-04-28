@@ -16,10 +16,20 @@ export function renderCatalogue() {
 function addAllRecipes(recipes) {
     const recipesFragment = document.createDocumentFragment();
     recipes.forEach(r => {
-        recipesFragment.appendChild(createRecipe(r));
+        let createdRecipe = createRecipe(r);
+        createdRecipe.recipeId = r._id;
+        createdRecipe.addEventListener('click', (e) => {
+            fetch(`${url}/${e.currentTarget.recipeId}`)
+                .then(response => response.json())
+                .then(recipe => {
+                    createdRecipe.replaceWith(createFullRecipe(recipe));
+                })
+                .catch(err => console.log(err))
+        })
+        recipesFragment.appendChild(createdRecipe);
     })
     catalogueElement.innerHTML = '';
-    catalogueElement.appendChild(recipesFragment)
+    catalogueElement.appendChild(recipesFragment);
 }
 
 function createRecipe(recipe) {
@@ -34,5 +44,29 @@ function createRecipe(recipe) {
                 </div>
                 `
 
+    return recipeContainer;
+}
+
+function createFullRecipe(recipe) {
+    let recipeContainer = document.createElement('article');
+
+    recipeContainer.innerHTML = `
+    <h2>${recipe.name}</h2>
+        <div class="band">
+            <div class="thumb">
+                <img src=${recipe.img}>
+            </div>
+            <div class="ingredients">
+                <h3>Ingredients:</h3>
+                <ul>
+                    ${recipe.ingredients.map(x => `<li>${x}</li>`).join('')} 
+                </ul>
+            </div>
+        </div>
+        <div class="description">
+            <h3>Preparation:</h3>
+            ${recipe.steps.map(x => `<p>${x}</p>`).join('')} 
+        </div>
+    `
     return recipeContainer;
 }
